@@ -1,11 +1,12 @@
 numlist = [1,2,3,4,5] #Ejemplo1: Lista con 5 numeros
 numtupla = (1,3,5,7,9) #Ejemplo2: Tupla con 5 numeros
+numset =  {1,2,3,4,5} #Ejemplo3: SET con 6 numeros
 
 operaciones = ['Suma','Resta','Multiplicacion','Division']
-valores_permitidos = (list,tuple,dict)
+valores_permitidos = (list,tuple,set)
 
 def menu_inicio():
-    operacion = input("Selecciona la Operacion que deseas realizar: \nSuma\nResta\nMultiplicacion\nDivision \n Que operacion quieres realizar:  ")
+    operacion = input("Selecciona la Operacion que deseas realizar:\nSuma\nResta\nMultiplicacion\nDivision \nQue operacion quieres realizar:")
     return operacion
 
 def valida_valores(obj):
@@ -40,10 +41,9 @@ def operaciones_basicas (valor,operacion):
             resultado = resultado * i
         print(f"La multiplicacion de los valores {valor} es {resultado} ")
     elif operacion == 'Division':
-        resultado = 1
-        for i in valor: 
-            resultado = 1
-            resultado = resultado / i
+        resultado = valor[0]
+        for i in range(len(valor) - 1):
+            resultado /= valor[i + 1]
         print(f"La division de los valores {valor} es {resultado} ")
 
 operacion = menu_inicio()
@@ -51,8 +51,10 @@ operacion = menu_inicio()
 if valida_operacion(operacion) == 1:
     res = valida_valores(numlist)
     if res == 101:
-        print("")
+        print("la lista no contiene los elementos Necesarios")
     elif res == 102:
-        print("")
+        print("significa que el objeto ingresado no es una Lista , Tupla o Diccionario")
     else:
         operaciones_basicas(numlist,operacion)
+else:
+    print("la operacion seleccionada no es correcta")
