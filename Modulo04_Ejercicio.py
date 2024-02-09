@@ -41,6 +41,9 @@ def operaciones_basicas (valor,operacion):
             resultado = resultado * i
         print(f"La multiplicacion de los valores {valor} es {resultado} ")
     elif operacion == 'Division':
+        if type(valor) == set:
+            valor = list(valor)
+        
         resultado = valor[0]
         for i in range(len(valor) - 1):
             resultado /= valor[i + 1]
